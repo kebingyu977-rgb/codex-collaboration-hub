@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>意大利 - 西南欧线下市场marketing追踪底表</title>
+  <style>
+    :root {
+      --bg: #f7f2e9;
+      --panel: #fffdf8;
+      --ink: #24303a;
+      --muted: #697482;
+      --line: #e7ddce;
+      --accent: #bb6a3a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at left top, color-mix(in srgb, var(--accent) 16%, white), transparent 20%),
+        linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);
+    }
+    .page {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .page-title {
+      padding: 26px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, #173d47), #173d47 62%, #355963);
+      color: #fffef9;
+      box-shadow: 0 22px 50px rgba(24, 61, 71, 0.16);
+    }
+    .page-title h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+    .page-title p {
+      margin: 0;
+      line-height: 1.65;
+      color: rgba(255, 254, 249, 0.88);
+    }
+    .month-nav {
+      margin: 18px 0 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .month-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 20px rgba(82, 68, 38, 0.06);
+    }
+    .month-chip strong,
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3ede2;
+      color: #586270;
+      font-size: 13px;
+    }
+    .month-section + .month-section { margin-top: 30px; }
+    .month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .month-header h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+    .month-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .month-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .month-stats span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3ede2;
+      color: #586270;
+      font-size: 13px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(90, 74, 43, 0.07);
+    }
+    .campaign-meta {
+      margin-bottom: 14px;
+    }
+    .campaign-note {
+      margin-top: 10px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .meta-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .target-board {
+      margin-bottom: 16px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .summary-card {
+      padding: 16px;
+      border-radius: 20px;
+      background: #fbf7ef;
+      border: 1px solid var(--line);
+    }
+    .summary-card .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .summary-card .value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .summary-card .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .budget-track {
+      margin-top: 10px;
+      height: 10px;
+      background: #eee4d2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .budget-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, white));
+    }
+    .summary-metric {
+      margin-top: 12px;
+      padding: 12px 12px 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px dashed color-mix(in srgb, var(--accent) 28%, #d9cdb8);
+    }
+    .summary-metric-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .summary-metric-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .summary-metric-head strong {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.1;
+    }
+    .target-table-wrap,
+    .table-scroll {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .target-table th,
+    .target-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .target-table th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .progress-cell {
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .progress-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .target-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      color: #cbbfae;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 800;
+      transition: transform 0.15s ease;
+    }
+    .target-slot.kol {
+      color: #c9d5ff;
+    }
+    .target-slot.ugc {
+      color: #c5e2d0;
+    }
+    .target-slot.filled.kol {
+      color: #365ccf;
+      transform: scale(0.92);
+    }
+    .target-slot.filled.ugc {
+      color: #25714f;
+      transform: scale(0.92);
+    }
+    .target-slot.warning {
+      color: #d7a926;
+    }
+    .progress-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .marker {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f5efe5;
+      color: #4b5563;
+      border: 1px solid transparent;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .marker.kol {
+      background: #eef2ff;
+      color: #365ccf;
+    }
+    .marker.ugc {
+      background: #e9f5ee;
+      color: #25714f;
+    }
+    .marker.warning {
+      background: #fff5cf;
+      border-color: #f0d574;
+      color: #8a5b00;
+    }
+    .shape {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .marker-name {
+      max-width: 112px;
+      font-size: 11px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .tracker-table {
+      min-width: 1820px;
+      font-size: 13px;
+    }
+    .tracker-table th,
+    .tracker-table td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      vertical-align: top;
+      background: #fffef9;
+    }
+    .tracker-table thead tr:first-child th {
+      text-align: center;
+      font-size: 14px;
+      color: #364152;
+    }
+    .group-head-base { background: #f7f1e6; }
+    .group-head-pre { background: #dff0df; }
+    .group-head-post { background: #dce8f7; }
+    .nowrap { white-space: nowrap; }
+    .wrap {
+      white-space: pre-line;
+      word-break: break-word;
+      min-width: 180px;
+    }
+    .link a {
+      color: #1f5bd8;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      background: #f1eee8;
+      color: #45505c;
+    }
+    .status.published {
+      background: #e4f4ea;
+      color: #1e6e4d;
+    }
+    .status.confirmed {
+      background: #e7efff;
+      color: #365ccf;
+    }
+    .status.unknown {
+      background: #fdf0d4;
+      color: #946200;
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 58px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 12px;
+      color: white;
+    }
+    .rank-1 { background: #d25b54; }
+    .rank-2 { background: #df8a37; }
+    .rank-3 { background: #d8b13f; color: #5a4200; }
+    .rank-4 { background: #5f88d8; }
+    .rank-5 { background: #6fa0d1; }
+    .metric-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .metric-block small {
+      color: var(--muted);
+    }
+    .empty {
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: #faf7f1;
+      border-radius: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="back-link" href="./index.html">返回总览</a>
+      <span class="meta-pill">最近更新：2026-08-05</span>
+    </div>
+    <section class="page-title">
+      <h1>意大利</h1>
+      <p>西南欧线下市场marketing追踪底表</p>
+    </section>
+    <nav class="month-nav">
+        <a class="month-chip" href="#2026-06-07">
+          <span>2026年6-7月</span>
+          <strong>7</strong>
+        </a>
+      
+        <a class="month-chip" href="#2026-09">
+          <span>2026年9月</span>
+          <strong>9</strong>
+        </a>
+      </nav>
+    
+        <section class="month-section" id="2026-06-07">
+          <div class="month-header">
+            <div>
+              <h2>2026年6-7月</h2>
+              <p>共 7 条记录</p>
+            </div>
+            <div class="month-stats">
+              <span>已谈下/已发布：7</span>
+              <span>已发布：7</span>
+              <span>待补地址：0</span>
+            </div>
+          </div>
+          
+    <div class="panel campaign-meta">
+      <strong>2026年6-7月</strong>
+      
+      <div class="campaign-note">视频发布后数据拆分为投流前、投流后；流量反馈按最终播放量自动排名。</div>
+    </div>
+  
+          
+          <div class="panel">
+    <div class="table-scroll">
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th class="group-head-base" colspan="18">前期沟通</th>
+            <th class="group-head-pre" colspan="6">投流前</th>
+            <th class="group-head-post" colspan="7">投流后</th>
+          </tr>
+          <tr>
+            <th>date</th>
+            <th>name</th>
+            <th>ins ID name</th>
+            <th>adress</th>
+            <th>email</th>
+            <th>platform</th>
+            <th>Remark</th>
+            <th>Fan base</th>
+            <th>fee</th>
+            <th>产品</th>
+            <th>合作内容</th>
+            <th>当前状态</th>
+            <th>预计发内容时间</th>
+            <th>寄样</th>
+            <th>初稿</th>
+            <th>反馈</th>
+            <th>定稿</th>
+            <th>发布链接 link</th>
+            <th>发布时间</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>投流起点</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>流量反馈</th>
+            <th>销售反馈</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="nowrap">2026.6.18</td>
+          <td>Anna</td>
+          <td>annaletyzia</td>
+          <td class="wrap">Anna Letizia Via Naviglio 9 25016 ghedi Brescia Italia 3891837703</td>
+          <td>Annaletizia87@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/annaletyzia/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"><a href="https://canva.link/yv9vtc6fg9ea4fe" target="_blank" rel="noreferrer">素材链接</a></td>
+          <td>6.3w</td>
+          <td>i6 max pro+200€</td>
+          <td>S7</td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DanEnjMoywC/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-11</td>
+          <td></td>
+          <td>1451</td>
+          <td>4</td>
+          <td>21</td>
+          <td class="nowrap">2026-07-14</td>
+          <td>124835</td>
+          <td>1309</td>
+          <td></td>
+          <td>29</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-2">TOP 2</span>
+      <small>最终播放 124,835</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.18</td>
+          <td>Lara Burrone</td>
+          <td>consiglidilara</td>
+          <td class="wrap">Citofonare a Lara Burrone
+Oppure Vanessa Adduci
+Vi Beri 31 Trivolzio (PV) 27020
+3459436728</td>
+          <td>homesweethomegold33@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/consiglidilara/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>4.9w</td>
+          <td>i6 max pro+200€</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DankE4xvVkm/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-11</td>
+          <td></td>
+          <td>72</td>
+          <td>2</td>
+          <td>6</td>
+          <td class="nowrap">2026-07-15</td>
+          <td>39550</td>
+          <td>96</td>
+          <td></td>
+          <td>7</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-4">TOP 4</span>
+      <small>最终播放 39,550</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.22</td>
+          <td>Katia Ugolotti</td>
+          <td>mammahomelover</td>
+          <td class="wrap">Katia Ugolotti
+Via Giovanni XXIII 23, 43022
+Basilicagoiano (PR)
+3465370307</td>
+          <td>mammalovehome@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/mammahomelover/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>1w</td>
+          <td>i6 max pro</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DaksKmXtuNB/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-09</td>
+          <td>6047</td>
+          <td>113</td>
+          <td>11</td>
+          <td>55</td>
+          <td class="nowrap">2026-07-16</td>
+          <td>22232</td>
+          <td>153</td>
+          <td></td>
+          <td>47</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-5">TOP 5</span>
+      <small>最终播放 22,232</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.22</td>
+          <td>Xhuljana Naci</td>
+          <td>classic_contemporaryhome</td>
+          <td class="wrap">Xhuljana Naci
+Via felice Gramegna n18, 70022, Altamura (Bari)
+3284020816</td>
+          <td>gnaci1797@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/classic_contemporaryhome/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>2.5w</td>
+          <td>i6 max pro</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DahvcefM_1Q/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-10</td>
+          <td>110</td>
+          <td>14</td>
+          <td>41</td>
+          <td></td>
+          <td class="nowrap">2026-07-15</td>
+          <td>9039</td>
+          <td>130</td>
+          <td></td>
+          <td>59</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-5">TOP 6</span>
+      <small>最终播放 9,039</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.22</td>
+          <td>home.giulia_</td>
+          <td>home.giulia_</td>
+          <td class="wrap">Via campo sportivo 243 /d
+Pistoia
+Larciano Italy
+51036
+3477283363</td>
+          <td>giulia.shehi1@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/home.giulia_/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>4.6w</td>
+          <td>i6 max pro</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DanLp8-Iage/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-09</td>
+          <td>126837</td>
+          <td>2600</td>
+          <td>1</td>
+          <td>41</td>
+          <td class="nowrap">2026-07-15</td>
+          <td>135673</td>
+          <td>2627</td>
+          <td></td>
+          <td>51</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-1">TOP 1</span>
+      <small>最终播放 135,673</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.25</td>
+          <td>SOFIA BUFI</td>
+          <td>sofiabufi_</td>
+          <td class="wrap">VIA OSCULATI, 2 BIASSONO (MB) ITALIA
+CAP 20853
+Telefono 3387390330
+(Consegna a Moscadelli se non sono in casa)</td>
+          <td>Sofia.bufi@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/sofiabufi_/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>7.8w</td>
+          <td>i6 max pro+300€</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td>已送达</td>
+          <td>已发送初稿</td>
+          <td>已反馈初稿建议</td>
+          <td>定稿</td>
+          <td class="link"><a href="https://www.instagram.com/reel/DaxPrZdNDTe/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap">2026-07-14</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="nowrap">2026-07-15</td>
+          <td>39882</td>
+          <td>125</td>
+          <td></td>
+          <td>6</td>
+          <td>
+    <div class="metric-block">
+      <span class="rank-badge rank-3">TOP 3</span>
+      <small>最终播放 39,882</small>
+    </div>
+  </td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.6.26</td>
+          <td>Diana Kurtulaj</td>
+          <td>aleandro.daris</td>
+          <td class="wrap">Traversa delle Camelie Di Via Nappi 10, San Giuseppe Vesuviano (NA) 80047, Italy, +39 339 7308482</td>
+          <td>aleandrokurtulaj@yahoo.com</td>
+          <td class="link"><a href="https://www.instagram.com/aleandro.daris/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td>8.4w</td>
+          <td>i6 max pro</td>
+          <td></td>
+          <td></td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+        </section>
+      
+        <section class="month-section" id="2026-09">
+          <div class="month-header">
+            <div>
+              <h2>2026年9月</h2>
+              <p>共 9 条记录</p>
+            </div>
+            <div class="month-stats">
+              <span>已谈下/已发布：9</span>
+              <span>已发布：0</span>
+              <span>待补地址：0</span>
+            </div>
+          </div>
+          
+    <div class="panel campaign-meta">
+      <strong>2026年9月</strong>
+      <div class="meta-wrap"><span class="meta-pill">涉及产品：S7 Stretch Steam / i6 Max / S9 Artist Premium / S7 Stretch / i7 Fold</span></div>
+      <div class="campaign-note">内容预算€3000；投放预算€3500；总预算€7000-8000，其中浮动€1000放达人调度；总目标8人。</div>
+    </div>
+  
+          
+    <div class="panel target-board">
+      
+    <div class="summary-grid">
+      
+      <div class="summary-card">
+        <div class="label">找达人预算</div>
+        <div class="value">€4,500 / €2,478</div>
+        <div class="sub">剩余可调度 €2,022</div>
+        <div class="budget-track"><div class="budget-fill" style="width:55.1%; background:linear-gradient(90deg, #bb6a3a, color-mix(in srgb, #bb6a3a 60%, white));"></div></div>
+        <div class="summary-metric">
+          <div class="summary-metric-title">其中现金部分</div>
+          <div class="summary-metric-head">
+            <span>达人现金费用</span>
+            <strong>€1,250</strong>
+          </div>
+          <div class="sub">产品成本 €1,228 / 综合成本 €2,478</div>
+          <div class="budget-track"><div class="budget-fill" style="width:27.8%; background:linear-gradient(90deg, color-mix(in srgb, #bb6a3a 78%, #2f4154), color-mix(in srgb, #bb6a3a 42%, white));"></div></div>
+        </div>
+      </div>
+  
+      <div class="summary-card">
+        <div class="label">总预算盘子</div>
+        <div class="value">€8,000</div>
+        <div class="sub">其中达人调度浮动 €1,000 / 投放预留 €3,500 / 总结余 €5,522</div>
+      </div>
+    </div>
+  
+      <div class="target-table-wrap">
+        <table class="target-table">
+          <thead>
+            <tr>
+              <th>品</th>
+              <th>侧重</th>
+              <th>投放</th>
+              <th>内容</th>
+              <th>成本价</th>
+              <th>目标人数&类型</th>
+              <th>当前进度</th>
+              <th>已落地</th>
+              <th>已用总成本</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="nowrap"><strong>S7 Stretch Steam</strong></td>
+          <td>最高（拽起来）</td>
+          <td>€900</td>
+          <td>€1,000</td>
+          <td>€158</td>
+          <td>1 KOL + 2 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot kol" title="待定">▲</span><span class="target-slot ugc filled" title="Renata Shkalla">●</span><span class="target-slot ugc filled" title="Francesca di marco">●</span><span class="target-slot ugc filled" title="Giulia dal bello">●</span><span class="target-slot ugc filled" title="Asciutto Nicolina">●</span><span class="target-slot ugc filled" title="Palushi Fationa">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Renata Shkalla">
+                  <span class="shape">●</span>
+                  <span class="marker-name">allthings.ren.and.co</span>
+                </span>
+              
+                <span class="marker ugc" title="Francesca di marco">
+                  <span class="shape">●</span>
+                  <span class="marker-name">lele_s_mom_</span>
+                </span>
+              
+                <span class="marker ugc" title="Giulia dal bello">
+                  <span class="shape">●</span>
+                  <span class="marker-name">theincrediblefamily</span>
+                </span>
+              
+                <span class="marker ugc" title="Asciutto Nicolina">
+                  <span class="shape">●</span>
+                  <span class="marker-name">thegirlgreeneyes</span>
+                </span>
+              
+                <span class="marker ugc" title="Palushi Fationa">
+                  <span class="shape">●</span>
+                  <span class="marker-name">itsfationa</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 5 UGC</td>
+          <td>€1,640</td>
+          <td>主打蒸汽</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>i6 Max</strong></td>
+          <td>高（清库存+线上only）</td>
+          <td>€1,000</td>
+          <td>€500</td>
+          <td>€91</td>
+          <td>2 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot ugc filled" title="Ylenia Mocci">●</span><span class="target-slot ugc" title="待定">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Ylenia Mocci">
+                  <span class="shape">●</span>
+                  <span class="marker-name">ylenia_botanicalhome</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 1 UGC</td>
+          <td>€91</td>
+          <td>2 UGC（置换），Story挂链接</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>S9 Artist Premium</strong></td>
+          <td>中（形象）</td>
+          <td>€600</td>
+          <td>€800</td>
+          <td>€128</td>
+          <td>1 KOL</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot kol filled" title="Fjoralba Zerdelia">▲</span></div>
+              <div class="progress-names">
+                <span class="marker kol" title="Fjoralba Zerdelia">
+                  <span class="shape">▲</span>
+                  <span class="marker-name">valzer_z</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>1 KOL / 0 UGC</td>
+          <td>€428</td>
+          <td>1调性KOL，立形象</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>S7 Stretch</strong></td>
+          <td>低（白走）</td>
+          <td>€400</td>
+          <td>€350</td>
+          <td>€105</td>
+          <td>1 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot ugc filled" title="Francesca Cancilla">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Francesca Cancilla">
+                  <span class="shape">●</span>
+                  <span class="marker-name">kicca_c</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 1 UGC</td>
+          <td>€105</td>
+          <td>1 UGC</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>i7 Fold</strong></td>
+          <td>最低（露出+线上only）</td>
+          <td>€600</td>
+          <td>€350</td>
+          <td>€114</td>
+          <td>1 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot ugc filled" title="Marina Jugovac">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Marina Jugovac">
+                  <span class="shape">●</span>
+                  <span class="marker-name">casadi_ventimetriquadri</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 1 UGC</td>
+          <td>€214</td>
+          <td>1 UGC</td>
+        </tr>
+      </tbody>
+        </table>
+      </div>
+    </div>
+  
+          <div class="panel">
+    <div class="table-scroll">
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th class="group-head-base" colspan="18">前期沟通</th>
+            <th class="group-head-pre" colspan="6">投流前</th>
+            <th class="group-head-post" colspan="7">投流后</th>
+          </tr>
+          <tr>
+            <th>date</th>
+            <th>name</th>
+            <th>ins ID name</th>
+            <th>adress</th>
+            <th>email</th>
+            <th>platform</th>
+            <th>Remark</th>
+            <th>Fan base</th>
+            <th>fee</th>
+            <th>产品</th>
+            <th>合作内容</th>
+            <th>当前状态</th>
+            <th>预计发内容时间</th>
+            <th>寄样</th>
+            <th>初稿</th>
+            <th>反馈</th>
+            <th>定稿</th>
+            <th>发布链接 link</th>
+            <th>发布时间</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>投流起点</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>流量反馈</th>
+            <th>销售反馈</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Francesca Cancilla</td>
+          <td>kicca_c</td>
+          <td class="wrap">Francesca Cancilla
+Via Ennio Flaiano, 8
+90146 Palermo
++393479165711</td>
+          <td>francescacancilla84@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/kicca_c/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换</td>
+          <td>S7 Stretch</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Fjoralba Zerdelia</td>
+          <td>valzer_z</td>
+          <td class="wrap">Fjoralba Zerdelia
+via roma 6
+san martino alfieri, asti
+14010
+00393204233047</td>
+          <td>fjoralbazerdelia@icloud.com</td>
+          <td class="link"><a href="https://www.instagram.com/valzer_z/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>300€</td>
+          <td>S9 Artist Premium</td>
+          <td></td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.6</td>
+          <td>Renata Shkalla</td>
+          <td>allthings.ren.and.co</td>
+          <td class="wrap">Renata Shkalla
+Via Cesare Battisti 46B
+Vedano al Lambro
+Monza e Brianza
+20854
+Italy
+3495074509</td>
+          <td>renshkalla@outlook.it</td>
+          <td class="link"><a href="https://www.instagram.com/allthings.ren.and.co/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>1台机器+100€</td>
+          <td>S7 Stretch Steam</td>
+          <td></td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>S7 Stretch Steam，1台机器+100€</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.12</td>
+          <td>Francesca di marco</td>
+          <td>lele_s_mom_</td>
+          <td class="wrap">Francesca di marco
+Via piazza lusi 148
+Capistrello aq
+67053
+3667008311</td>
+          <td>Francescadimarco53@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/lele_s_mom_/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换</td>
+          <td>S7 Stretch Steam</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>FrancescaDim / S7 stretch steam</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.13</td>
+          <td>Giulia dal bello</td>
+          <td>theincrediblefamily</td>
+          <td class="wrap">Giulia dal bello
+Via Vittorio Bottego 2a
+45100
+Rovigo (ro) Italia
++39 349 0806455</td>
+          <td>gianlucaroca1989@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/theincrediblefamily/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换</td>
+          <td>S7 Stretch Steam</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>S7 Stretch Steam</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.13</td>
+          <td>Ylenia Mocci</td>
+          <td>ylenia_botanicalhome</td>
+          <td class="wrap">Ylenia Mocci
+Via Palermo 127,
+Ladispoli, 00055 (RM),
+ITALIA
++393397152851</td>
+          <td>yleniabotanicalhome@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/ylenia_botanicalhome/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换 / i6 max pro</td>
+          <td>i6 Max</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>i6 max pro / 免费置换</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.25</td>
+          <td>Asciutto Nicolina</td>
+          <td>thegirlgreeneyes</td>
+          <td class="wrap">Asciutto Nicolina
+via Temesa n 11
+Reggio Calabria
+RC
+ITALIA
+89132
+3458705241</td>
+          <td>linasavy@live.it</td>
+          <td class="link"><a href="https://www.instagram.com/thegirlgreeneyes/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>1台机器+300€</td>
+          <td>S7 Stretch Steam</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Lina</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.25</td>
+          <td>Palushi Fationa</td>
+          <td>itsfationa</td>
+          <td class="wrap">Palushi Fationa
+Via Galileo Galilei 114
+Collesalvetti
+Livorno
+Italia
+57014
++39 3889376316</td>
+          <td>lunameraj@yahoo.com</td>
+          <td class="link"><a href="https://www.instagram.com/itsfationa/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>1台机器+450€</td>
+          <td>S7 Stretch Steam</td>
+          <td>1条reels+3条story+tiktok转发</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.25</td>
+          <td>Marina Jugovac</td>
+          <td>casadi_ventimetriquadri</td>
+          <td class="wrap">Marina Jugovac
+via Massimo d’Azeglio 13/E
+Putignano BA 70017
+Citofono: growth agents
+3453027403</td>
+          <td>20m2home.marina@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/casadi_ventimetriquadri/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>1台机器+100€</td>
+          <td>i7 Fold</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+        </section>
+      
+  </div>
+</body>
+</html>

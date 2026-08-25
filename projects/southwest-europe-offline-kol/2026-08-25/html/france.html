@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>法国 - 西南欧线下市场marketing追踪底表</title>
+  <style>
+    :root {
+      --bg: #f7f2e9;
+      --panel: #fffdf8;
+      --ink: #24303a;
+      --muted: #697482;
+      --line: #e7ddce;
+      --accent: #4f6fd0;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at left top, color-mix(in srgb, var(--accent) 16%, white), transparent 20%),
+        linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);
+    }
+    .page {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .page-title {
+      padding: 26px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, #173d47), #173d47 62%, #355963);
+      color: #fffef9;
+      box-shadow: 0 22px 50px rgba(24, 61, 71, 0.16);
+    }
+    .page-title h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+    .page-title p {
+      margin: 0;
+      line-height: 1.65;
+      color: rgba(255, 254, 249, 0.88);
+    }
+    .month-nav {
+      margin: 18px 0 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .month-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 20px rgba(82, 68, 38, 0.06);
+    }
+    .month-chip strong,
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3ede2;
+      color: #586270;
+      font-size: 13px;
+    }
+    .month-section + .month-section { margin-top: 30px; }
+    .month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .month-header h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+    .month-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .month-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .month-stats span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3ede2;
+      color: #586270;
+      font-size: 13px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(90, 74, 43, 0.07);
+    }
+    .campaign-meta {
+      margin-bottom: 14px;
+    }
+    .campaign-note {
+      margin-top: 10px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .meta-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .target-board {
+      margin-bottom: 16px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .summary-card {
+      padding: 16px;
+      border-radius: 20px;
+      background: #fbf7ef;
+      border: 1px solid var(--line);
+    }
+    .summary-card .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .summary-card .value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .summary-card .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .budget-track {
+      margin-top: 10px;
+      height: 10px;
+      background: #eee4d2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .budget-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, white));
+    }
+    .summary-metric {
+      margin-top: 12px;
+      padding: 12px 12px 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px dashed color-mix(in srgb, var(--accent) 28%, #d9cdb8);
+    }
+    .summary-metric-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .summary-metric-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .summary-metric-head strong {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.1;
+    }
+    .target-table-wrap,
+    .table-scroll {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .target-table th,
+    .target-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .target-table th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .progress-cell {
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .progress-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .target-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      color: #cbbfae;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 800;
+      transition: transform 0.15s ease;
+    }
+    .target-slot.kol {
+      color: #c9d5ff;
+    }
+    .target-slot.ugc {
+      color: #c5e2d0;
+    }
+    .target-slot.filled.kol {
+      color: #365ccf;
+      transform: scale(0.92);
+    }
+    .target-slot.filled.ugc {
+      color: #25714f;
+      transform: scale(0.92);
+    }
+    .target-slot.warning {
+      color: #d7a926;
+    }
+    .progress-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .marker {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f5efe5;
+      color: #4b5563;
+      border: 1px solid transparent;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .marker.kol {
+      background: #eef2ff;
+      color: #365ccf;
+    }
+    .marker.ugc {
+      background: #e9f5ee;
+      color: #25714f;
+    }
+    .marker.warning {
+      background: #fff5cf;
+      border-color: #f0d574;
+      color: #8a5b00;
+    }
+    .shape {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .marker-name {
+      max-width: 112px;
+      font-size: 11px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .tracker-table {
+      min-width: 1820px;
+      font-size: 13px;
+    }
+    .tracker-table th,
+    .tracker-table td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      vertical-align: top;
+      background: #fffef9;
+    }
+    .tracker-table thead tr:first-child th {
+      text-align: center;
+      font-size: 14px;
+      color: #364152;
+    }
+    .group-head-base { background: #f7f1e6; }
+    .group-head-pre { background: #dff0df; }
+    .group-head-post { background: #dce8f7; }
+    .nowrap { white-space: nowrap; }
+    .wrap {
+      white-space: pre-line;
+      word-break: break-word;
+      min-width: 180px;
+    }
+    .link a {
+      color: #1f5bd8;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      background: #f1eee8;
+      color: #45505c;
+    }
+    .status.published {
+      background: #e4f4ea;
+      color: #1e6e4d;
+    }
+    .status.confirmed {
+      background: #e7efff;
+      color: #365ccf;
+    }
+    .status.unknown {
+      background: #fdf0d4;
+      color: #946200;
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 58px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 12px;
+      color: white;
+    }
+    .rank-1 { background: #d25b54; }
+    .rank-2 { background: #df8a37; }
+    .rank-3 { background: #d8b13f; color: #5a4200; }
+    .rank-4 { background: #5f88d8; }
+    .rank-5 { background: #6fa0d1; }
+    .metric-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .metric-block small {
+      color: var(--muted);
+    }
+    .empty {
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: #faf7f1;
+      border-radius: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="back-link" href="./index.html">返回总览</a>
+      <span class="meta-pill">最近更新：2026-08-05</span>
+    </div>
+    <section class="page-title">
+      <h1>法国</h1>
+      <p>西南欧线下市场marketing追踪底表</p>
+    </section>
+    <nav class="month-nav">
+        <a class="month-chip" href="#2026-09">
+          <span>2026年9月</span>
+          <strong>11</strong>
+        </a>
+      </nav>
+    
+        <section class="month-section" id="2026-09">
+          <div class="month-header">
+            <div>
+              <h2>2026年9月</h2>
+              <p>共 11 条记录</p>
+            </div>
+            <div class="month-stats">
+              <span>已谈下/已发布：11</span>
+              <span>已发布：3</span>
+              <span>待补地址：0</span>
+            </div>
+          </div>
+          
+    <div class="panel campaign-meta">
+      <strong>2026年9月</strong>
+      <div class="meta-wrap"><span class="meta-pill">内容启动：2026.8.24</span><span class="meta-pill">涉及产品：S5 max / S7 max pro / i7 fold / S9 artist steam pro</span></div>
+      <div class="campaign-note">9月活动共4个品，8.24开始陆续发出内容。</div>
+    </div>
+  
+          
+    <div class="panel target-board">
+      
+    <div class="summary-grid">
+      
+      <div class="summary-card">
+        <div class="label">找达人预算</div>
+        <div class="value">€10,000 / €10,000</div>
+        <div class="sub">剩余可调度 €0</div>
+        <div class="budget-track"><div class="budget-fill" style="width:100.0%; background:linear-gradient(90deg, #4f6fd0, color-mix(in srgb, #4f6fd0 60%, white));"></div></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">综合成本进度</div>
+        <div class="value">€10,000</div>
+        <div class="sub">达人费用 €10,000 / 产品成本 €0</div>
+      </div>
+  
+      <div class="summary-card">
+        <div class="label">总预算盘子</div>
+        <div class="value">€20,000</div>
+        <div class="sub">投放预留 €10,000 / 总结余 €10,000</div>
+      </div>
+    </div>
+  
+      <div class="target-table-wrap">
+        <table class="target-table">
+          <thead>
+            <tr>
+              <th>品</th>
+              <th>侧重</th>
+              <th>投放</th>
+              <th>内容</th>
+              <th>成本价</th>
+              <th>目标人数&类型</th>
+              <th>当前进度</th>
+              <th>已落地</th>
+              <th>已用总成本</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="nowrap"><strong>S5 max</strong></td>
+          <td></td>
+          <td>€0</td>
+          <td>€3,300</td>
+          <td>€0</td>
+          <td>1 KOL + 3 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot kol filled" title="Emilie Fanich">▲</span><span class="target-slot ugc filled" title="Mary">●</span><span class="target-slot ugc filled" title="Famille Augoyard">●</span><span class="target-slot ugc" title="待定">●</span></div>
+              <div class="progress-names">
+                <span class="marker kol" title="Emilie Fanich">
+                  <span class="shape">▲</span>
+                  <span class="marker-name">famillefanich</span>
+                </span>
+              
+                <span class="marker ugc" title="Mary">
+                  <span class="shape">●</span>
+                  <span class="marker-name">mary_familysquad34</span>
+                </span>
+              
+                <span class="marker ugc" title="Famille Augoyard">
+                  <span class="shape">●</span>
+                  <span class="marker-name">famille.augoyard.officiel</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>1 KOL / 2 UGC</td>
+          <td>€3,000</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>S9 artist steam pro</strong></td>
+          <td></td>
+          <td>€0</td>
+          <td>€2,700</td>
+          <td>€0</td>
+          <td>1 KOL + 2 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot kol filled" title="Elodie Elow Home">▲</span><span class="target-slot ugc filled" title="Lea Saffar">●</span><span class="target-slot ugc" title="待定">●</span></div>
+              <div class="progress-names">
+                <span class="marker kol" title="Elodie Elow Home">
+                  <span class="shape">▲</span>
+                  <span class="marker-name">elow.home</span>
+                </span>
+              
+                <span class="marker ugc" title="Lea Saffar">
+                  <span class="shape">●</span>
+                  <span class="marker-name">home.constructionfamily</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>1 KOL / 1 UGC</td>
+          <td>€4,600</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>i7 fold</strong></td>
+          <td></td>
+          <td>€0</td>
+          <td>€2,500</td>
+          <td>€0</td>
+          <td>4 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot ugc filled" title="Wafaa Nasraoui">●</span><span class="target-slot ugc filled" title="Katia">●</span><span class="target-slot ugc filled" title="Menahem Cindy">●</span><span class="target-slot ugc filled" title="Sophie">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Wafaa Nasraoui">
+                  <span class="shape">●</span>
+                  <span class="marker-name">wafaa_interieur</span>
+                </span>
+              
+                <span class="marker ugc" title="Katia">
+                  <span class="shape">●</span>
+                  <span class="marker-name">katia.sweethome</span>
+                </span>
+              
+                <span class="marker ugc" title="Menahem Cindy">
+                  <span class="shape">●</span>
+                  <span class="marker-name">cindymb_</span>
+                </span>
+              
+                <span class="marker ugc" title="Sophie">
+                  <span class="shape">●</span>
+                  <span class="marker-name">happy_petit_family</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 4 UGC</td>
+          <td>€1,400</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap"><strong>S7 max pro</strong></td>
+          <td></td>
+          <td>€0</td>
+          <td>€1,500</td>
+          <td>€0</td>
+          <td>3 UGC</td>
+          <td>
+            <div class="progress-cell">
+              <div class="progress-icons"><span class="target-slot ugc filled" title="Mme Rogeon Sabrina">●</span><span class="target-slot ugc filled" title="Marine leonetti">●</span><span class="target-slot ugc" title="待定">●</span></div>
+              <div class="progress-names">
+                <span class="marker ugc" title="Mme Rogeon Sabrina">
+                  <span class="shape">●</span>
+                  <span class="marker-name">lavilla.eden</span>
+                </span>
+              
+                <span class="marker ugc" title="Marine leonetti">
+                  <span class="shape">●</span>
+                  <span class="marker-name">marine_roseetjosephine</span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>0 KOL / 2 UGC</td>
+          <td>€1,000</td>
+          <td></td>
+        </tr>
+      </tbody>
+        </table>
+      </div>
+    </div>
+  
+          <div class="panel">
+    <div class="table-scroll">
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th class="group-head-base" colspan="18">前期沟通</th>
+            <th class="group-head-pre" colspan="6">投流前</th>
+            <th class="group-head-post" colspan="7">投流后</th>
+          </tr>
+          <tr>
+            <th>date</th>
+            <th>name</th>
+            <th>ins ID name</th>
+            <th>adress</th>
+            <th>email</th>
+            <th>platform</th>
+            <th>Remark</th>
+            <th>Fan base</th>
+            <th>fee</th>
+            <th>产品</th>
+            <th>合作内容</th>
+            <th>当前状态</th>
+            <th>预计发内容时间</th>
+            <th>寄样</th>
+            <th>初稿</th>
+            <th>反馈</th>
+            <th>定稿</th>
+            <th>发布链接 link</th>
+            <th>发布时间</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>投流起点</th>
+            <th>浏览/播放</th>
+            <th>点赞</th>
+            <th>转发</th>
+            <th>评论</th>
+            <th>流量反馈</th>
+            <th>销售反馈</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Wafaa Nasraoui</td>
+          <td>wafaa_interieur</td>
+          <td class="wrap">Wafaa Nasraoui
+8place Chaïm soutine
+78960 Voisins-le-Bretonneux
+06 14 87 32 01</td>
+          <td>Wafaaig.contact@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/wafaa_interieur/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>300€</td>
+          <td>i7 fold</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Katia</td>
+          <td>katia.sweethome</td>
+          <td class="wrap">2bis chemin de la mare rouge
+28210 Brechamps
+0659393077</td>
+          <td>grangehomestyle@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/katia.sweethome/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>800€</td>
+          <td>i7 fold</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"><a href="https://www.instagram.com/p/DcVbPhcCBp2/" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Mme Rogeon Sabrina</td>
+          <td>lavilla.eden</td>
+          <td class="wrap">Sabrina L La villa Eden
+16 rue du château d’eau
+Noyelles-sous-Bellonne (62490)
+0623141506</td>
+          <td>contactlavillaeden@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/lavilla.eden/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>500€</td>
+          <td>S7 max pro</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status published">已发布</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td>补发在途</td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"><a href="https://www.instagram.com/reel/Dcb6Q0Px5Xo/" target="_blank" rel="noreferrer">发布链接</a></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Menahem Cindy</td>
+          <td>cindymb_</td>
+          <td class="wrap">Menahem Cindy
+18 rue Cécile Chaminade
+13170 Les Pennes Mirabeau
+France
+0624852951</td>
+          <td>Contactcindymb@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/cindymb_/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换</td>
+          <td>i7 fold</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>免费置换</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Marine leonetti</td>
+          <td>marine_roseetjosephine</td>
+          <td class="wrap">Marine leonetti
+3 boulevard général de Gaulle
+20200 Bastia
+0620332252</td>
+          <td>marine@josephine-agency.com</td>
+          <td class="link"><a href="https://www.instagram.com/marine_roseetjosephine/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>500€</td>
+          <td>S7 max pro</td>
+          <td>1条reels+2条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>经纪人联系</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Elodie Elow Home</td>
+          <td>elow.home</td>
+          <td class="wrap">PICHOT Elodie
+21 allée de l’Isara
+95000 Cergy
+0601425644</td>
+          <td>contactelowhome@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/elow.home/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>3800€</td>
+          <td>S9 artist steam pro</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>地址已补；货品发错，补发在途</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.5</td>
+          <td>Sophie</td>
+          <td>happy_petit_family</td>
+          <td class="wrap">MAHOT Sophie
+20 rue de la futaie
+49070 St Jean de Linières
+0687674929</td>
+          <td>happypetitfamily1@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/happy_petit_family/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>300€</td>
+          <td>i7 fold</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>地址已补</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.7</td>
+          <td>Emilie Fanich</td>
+          <td>famillefanich</td>
+          <td class="wrap">Emilie Fanich
+14 chemin des cassettes
+77580 Crecy La Chapelle
+0695117585</td>
+          <td>famillefanich@egrown.fr</td>
+          <td class="link"><a href="https://www.instagram.com/famillefanich/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>2500€</td>
+          <td>S5 max</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td>已发送初稿</td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>地址已补</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.7</td>
+          <td>Mary</td>
+          <td>mary_familysquad34</td>
+          <td class="wrap">Stephen-Tiberino
+4 Rue Francis Garnier
+34740 Vendargues
+06.77.99.50.77</td>
+          <td>mary.familysquad@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/mary_familysquad34/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>500€</td>
+          <td>S5 max</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>等待合同和brief</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.7</td>
+          <td>Famille Augoyard</td>
+          <td>famille.augoyard.officiel</td>
+          <td class="wrap">Famille Augoyard
+1049 route de saint hilaire
+42720 Nandax
+0631224726</td>
+          <td>FamilleAugoyard5@gmail.com</td>
+          <td class="link"><a href="https://www.instagram.com/famille.augoyard.officiel/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>免费置换</td>
+          <td>S5 max</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>免费置换</td>
+        </tr>
+      
+        <tr>
+          <td class="nowrap">2026.8.18</td>
+          <td>Lea Saffar</td>
+          <td>home.constructionfamily</td>
+          <td class="wrap">Léa Saffar
+6 allée de l’aronde
+35520 Melesse
+FRANCE
+06 22 85 57 73</td>
+          <td>leahomeconstruction@lumera.social</td>
+          <td class="link"><a href="https://www.instagram.com/home.constructionfamily/" target="_blank" rel="noreferrer">Instagram</a></td>
+          <td class="link"></td>
+          <td></td>
+          <td>800€</td>
+          <td>S9 artist steam pro</td>
+          <td>1条reels+3条story</td>
+          <td><span class="status confirmed">已谈下</span></td>
+          <td class="nowrap">2026.8.24</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="link"></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="nowrap"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>等待合同和brief</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+        </section>
+      
+  </div>
+</body>
+</html>
