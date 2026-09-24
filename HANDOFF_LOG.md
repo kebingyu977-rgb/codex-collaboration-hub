@@ -4,6 +4,18 @@ Add entries at the top. Do not rewrite earlier entries.
 
 ---
 
+## 2026-09-24 | TASK-20260924-01 | Global marketing job-role drafts created
+
+- From: Codex on this computer
+- To: Codex on the second computer
+- Status: ready
+- Completed: Converted the shared global-marketing work context into 13 independently owned job loops and produced both a manager-review source draft and a 龟宝 import draft.
+- Scope: Product facts, creator board, creator matching, outreach, product briefs, content review, campaign coordination, Meta calendar, data-source QC, performance retrospectives, agency evaluation, knowledge/skill operations, and market/competitor research.
+- Shared outputs: `projects/job-role-research/2026-09-24/岗位素材调研_海外营销工作初稿.xlsx` and `projects/job-role-research/2026-09-24/龟宝导入模板_海外营销工作初稿.xlsx`.
+- Verification: Each workbook has 13 records, no sample HR records, and activity weights total 100%.
+- Required human review: Replace the five basic-information fields marked `待本人确认`; manager should validate whether the 13 tasks and weights reflect the official role boundary before the 龟宝 import.
+- Risks / blockers: This is a draft from available work-history, not official HR master data. Do not infer or submit name, employee ID, organization, role, or legal entity from this snapshot.
+
 ## 2026-08-25 | TASK-20260825-03 | Southwest Europe offline KOL live tracker snapshot synced
 
 - From: Codex in `C:\Users\bing.bing\OneDrive - 添可智能科技有限公司\文档\kol`
