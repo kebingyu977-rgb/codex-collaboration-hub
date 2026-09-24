@@ -23,7 +23,7 @@ Build a reliable operating hub for global marketing work, including product fact
 - Record facts with source paths; keep assumptions, missing evidence, and decisions separate.
 - Never place passwords, verification codes, API keys, or mailbox credentials in the hub.
 - Shared repo exports are snapshots only; the original editable working files remain in `C:\Users\bing.bing\OneDrive - 添可智能科技有限公司\文档\kol` and must not be moved, deleted, or overwritten from the hub.
-- The 2026-09-24 job-role drafts use 14 atomic marketing work loops. Three future responsibilities total 24%: online/offline Skill reuse (7%), offline competitor intelligence (6%), and offline channel strategy with online-to-offline conversion recommendations (11%).
+- The 2026-09-24 job-role drafts use 15 atomic marketing work loops. Four MECE future responsibilities total 24%: marketing-process standardization and online/offline Skill operations (5%), offline competitor intelligence (4%), offline channel and terminal opportunity mapping (5%), and product-priority, resource-allocation, and online-to-offline conversion strategy (10%).
 - The five basic information fields in the job-role drafts are deliberately marked `待本人确认`; do not submit or import them until the employee and manager replace them with official data.
 
 ## Known Blockers
