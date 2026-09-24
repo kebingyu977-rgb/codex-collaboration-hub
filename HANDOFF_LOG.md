@@ -15,7 +15,7 @@ Add entries at the top. Do not rewrite earlier entries.
 - Verification: Each workbook has 13 records, no sample HR records, and activity weights total 100%.
 - Required human review: Replace the five basic-information fields marked `待本人确认`; manager should validate whether the 13 tasks and weights reflect the official role boundary before the 龟宝 import.
 - Risks / blockers: This is a draft from available work-history, not official HR master data. Do not infer or submit name, employee ID, organization, role, or legal entity from this snapshot.
-- Update (2026-09-24): Reframed future work into four MECE responsibilities and rebalanced to 15 records totaling 100%: marketing-process standardization and online/offline Skill operations (5%), offline competitor intelligence (4%), offline channel and terminal opportunity mapping (5%), and product-priority, resource-allocation, and online-to-offline conversion strategy (10%). The role makes recommendations on product priority, budget allocation, and Brief requirements; it does not assume final budget approval authority.
+- Update (2026-09-24): Rebuilt the draft into the routine campaign chain and rebalanced to 15 records totaling 100%. Planning covers budget decomposition, target and online-to-offline measurement design, content strategy and KOL Brief planning, creator strategy, and paid-media node planning. Execution covers creator-board updates, matching, outreach, content approval, and weekly updates to the overseas upstream team. Measurement covers source QC, retrospectives, and agency evaluation. The role makes resource-allocation recommendations; it does not assume final budget approval authority.
 
 ## 2026-08-25 | TASK-20260825-03 | Southwest Europe offline KOL live tracker snapshot synced
 

@@ -23,7 +23,7 @@ Build a reliable operating hub for global marketing work, including product fact
 - Record facts with source paths; keep assumptions, missing evidence, and decisions separate.
 - Never place passwords, verification codes, API keys, or mailbox credentials in the hub.
 - Shared repo exports are snapshots only; the original editable working files remain in `C:\Users\bing.bing\OneDrive - 添可智能科技有限公司\文档\kol` and must not be moved, deleted, or overwritten from the hub.
-- The 2026-09-24 job-role drafts use 15 atomic marketing work loops. Four MECE future responsibilities total 24%: marketing-process standardization and online/offline Skill operations (5%), offline competitor intelligence (4%), offline channel and terminal opportunity mapping (5%), and product-priority, resource-allocation, and online-to-offline conversion strategy (10%).
+- The 2026-09-24 job-role drafts use a 15-step MECE activity chain: foundations (10%), planning (39%), creator execution and weekly reporting (39%), and measurement, retrospectives, and agency quality management (12%). Competitor and in-store/footfall analysis belong only to content strategy; online-to-offline conversion belongs only to the goal and measurement framework; confirmed requirements then feed the KOL Brief.
 - The five basic information fields in the job-role drafts are deliberately marked `待本人确认`; do not submit or import them until the employee and manager replace them with official data.
 
 ## Known Blockers
